@@ -2,6 +2,8 @@
 
 Utility library for generating consistent cache dependency keys for Kentico CMS applications
 
+[Install the NuGet Package](https://www.nuget.org/packages/WiredViews.Kentico.FluentCacheKeys/)
+
 ## Examples
 
 ### Creating cache keys for pages / documents / nodes
