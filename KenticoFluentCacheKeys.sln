@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KenticoFluentCacheKeys", "KenticoFluentCacheKeys\KenticoFluentCacheKeys.csproj", "{928A0F23-4E30-41B0-B1B3-95F0B00C346C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99D10518-5924-4409-B7C1-86D5A69A21B0}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Debug|x64.Build.0 = Debug|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Debug|x86.Build.0 = Debug|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Release|x64.ActiveCfg = Release|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Release|x64.Build.0 = Release|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Release|x86.ActiveCfg = Release|Any CPU
+		{928A0F23-4E30-41B0-B1B3-95F0B00C346C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F03EE5D-DA3E-41E0-BE60-0E86F303633A}
+	EndGlobalSection
+EndGlobal
