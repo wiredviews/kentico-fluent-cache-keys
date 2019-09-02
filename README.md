@@ -15,25 +15,25 @@ FluentCacheKey.ForPage().WithNodeId(4);
 
 FluentCacheKey.ForPage().RelationshipsOfNodeId(4);
 
-FluentCacheKey.ForPageOfSite("siteName").WithAliasPath("/path");
+FluentCacheKey.ForPage().OfSite("siteName").WithAliasPath("/path");
 
-FluentCacheKey.ForPageOfSite("siteName").WithAliasPath("/path", "en-us");
+FluentCacheKey.ForPage().OfSite("siteName").WithAliasPath("/path", "en-us");
 
-FluentCacheKey.ForPagesOfSite("siteName").OfClassName("className");
+FluentCacheKey.ForPages().OfSite("siteName").OfClassName("className");
 
-FluentCacheKey.ForPagesOfSite("siteName").UnderAliasPath("/path");
+FluentCacheKey.ForPages().OfSite("siteName").UnderAliasPath("/path");
 ```
 
 ### Creating cache keys for CMS objects / custom module classes
 
 ```csharp
-FluentCacheKey.ForObjectOfClassName("className").WithCodeName("codeName");
+FluentCacheKey.ForObject().OfClassName("className").WithCodeName("codeName");
 
-FluentCacheKey.ForObjectOfClassName("className").WithGuid(default);
+FluentCacheKey.ForObject().OfClassName("className").WithGuid(default);
 
-FluentCacheKey.ForObjectOfClassName("className").WithId(2);
+FluentCacheKey.ForObject().OfClassName("className").WithId(2);
 
-FluentCacheKey.ForObjectsOfClassName("className").All();
+FluentCacheKey.ForObjects().OfClassName("className").All();
 ```
 
 ### Creating cache keys for attachments
