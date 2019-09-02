@@ -9,47 +9,47 @@ Utility library for generating consistent cache dependency keys for Kentico CMS 
 ### Creating cache keys for pages / documents / nodes
 
 ```csharp
-FluentCacheKey.Page().WithDocumentId(5);
+FluentCacheKey.ForPage().WithDocumentId(5);
 
-FluentCacheKey.Page().WithNodeId(4);
+FluentCacheKey.ForPage().WithNodeId(4);
 
-FluentCacheKey.PageForSite("siteName").WithAliasPath("/path");
+FluentCacheKey.ForPage().RelationshipsOfNodeId(4);
 
-FluentCacheKey.PageForSite("siteName").WithAliasPath("/path", "en-us");
+FluentCacheKey.ForPage().OfSite("siteName").WithAliasPath("/path");
 
-FluentCacheKey.Pages().WithRelationshipsToNodeId(4);
+FluentCacheKey.ForPage().OfSite("siteName").WithAliasPath("/path", "en-us");
 
-FluentCacheKey.PagesForSite("siteName").OfClass("className");
+FluentCacheKey.ForPages().OfSite("siteName").OfClassName("className");
 
-FluentCacheKey.PagesForSite("siteName").WithParentAliasPath("/path");
+FluentCacheKey.ForPages().OfSite("siteName").UnderAliasPath("/path");
 ```
 
 ### Creating cache keys for CMS objects / custom module classes
 
 ```csharp
-FluentCacheKey.Object("className").WithCodeName("codeName");
+FluentCacheKey.ForObject().OfClassName("className").WithCodeName("codeName");
 
-FluentCacheKey.Object("className").WithGuid(default);
+FluentCacheKey.ForObject().OfClassName("className").WithGuid(default);
 
-FluentCacheKey.Object("className").WithId(2);
+FluentCacheKey.ForObject().OfClassName("className").WithId(2);
 
-FluentCacheKey.Objects("className").All();
+FluentCacheKey.ForObjects().OfClassName("className").All();
 ```
 
 ### Creating cache keys for attachments
 
 ```csharp
-FluentCacheKey.Attachment().All();
+FluentCacheKey.ForAttachment().WithGuid(default);
 
-FluentCacheKey.Attachment().WithGuid(default);
+FluentCacheKey.ForAttachments().OfDocumentId(4);
 
-FluentCacheKey.Attachment().ForDocumentId(4);
+FluentCacheKey.ForAttachments().All();
 ```
 
 ### Creating cache keys for media files
 
 ```csharp
-FluentCacheKey.MediaFile().WithGuid(default);
+FluentCacheKey.ForMediaFile().WithGuid(default);
 
-FluentCacheKey.MediaFile().PreviewWithGuid(default);
+FluentCacheKey.ForMediaFile().PreviewWithGuid(default);
 ```
