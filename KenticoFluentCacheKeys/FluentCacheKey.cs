@@ -13,16 +13,17 @@ namespace FluentCacheKeys
         string SiteName { get; }
     }
 
-    public interface IObjectCacheDependencyKey
+    public interface IObjectOfClassNameCacheDependencyKey
     {
         string ClassName { get; }
     }
-    public interface IObjectsCacheDependencyKey
+    public interface IObjectsOfClassNameCacheDependencyKey
     {
         string ClassName { get; }
     }
 
     public interface IAttachmentCacheDependencyKey { }
+    public interface IAttachmentsCacheDependencyKey { }
     public interface IMediaFileCacheDependencyKey { }
 
     /// <summary>
@@ -33,9 +34,10 @@ namespace FluentCacheKeys
         ISitePageCacheDependencyKey,
         IPagesCacheDependencyKey,
         ISitePagesCacheDependencyKey,
-        IObjectCacheDependencyKey,
-        IObjectsCacheDependencyKey,
+        IObjectOfClassNameCacheDependencyKey,
+        IObjectsOfClassNameCacheDependencyKey,
         IAttachmentCacheDependencyKey,
+        IAttachmentsCacheDependencyKey,
         IMediaFileCacheDependencyKey
     {
         public string ClassName { get; }
@@ -45,28 +47,28 @@ namespace FluentCacheKeys
         /// Builds Document and Node related cache dependency keys for a single site-independent page
         /// </summary>
         /// <returns></returns>
-        public static IPageCacheDependencyKey Page() =>
+        public static IPageCacheDependencyKey ForPage() =>
             new FluentCacheKey(null, null);
 
         /// <summary>
         /// Builds Document and Node related cache dependency keys for a single site-dependent page
         /// </summary>
         /// <returns></returns>
-        public static ISitePageCacheDependencyKey PageForSite(string siteName) =>
+        public static ISitePageCacheDependencyKey ForPageOfSite(string siteName) =>
             new FluentCacheKey(null, siteName);
 
         /// <summary>
         /// Builds Document and Node related cache dependency keys for a multiple site-independent pages
         /// </summary>
         /// <returns></returns>
-        public static IPagesCacheDependencyKey Pages() =>
+        public static IPagesCacheDependencyKey ForPages() =>
             new FluentCacheKey(null, null);
 
         /// <summary>
         /// Builds Document and Node related cache dependency keys for multiple site-dependent pages
         /// </summary>
         /// <returns></returns>
-        public static ISitePagesCacheDependencyKey PagesForSite(string siteName) =>
+        public static ISitePagesCacheDependencyKey ForPagesOfSite(string siteName) =>
             new FluentCacheKey(null, siteName);
 
         /// <summary>
@@ -74,29 +76,32 @@ namespace FluentCacheKeys
         /// </summary>
         /// <param name="className"></param>
         /// <returns></returns>
-        public static IObjectCacheDependencyKey Object(string className) =>
+        public static IObjectOfClassNameCacheDependencyKey ForObjectOfClassName(string className) =>
             new FluentCacheKey(className, null);
 
         /// <summary>
-        /// Builds CMS Object and custom Module Class related cache dependency keys for multiple single object
+        /// Builds CMS Object and custom Module Class related cache dependency keys for multiple objects
         /// </summary>
         /// <param name="className"></param>
         /// <returns></returns>
-        public static IObjectsCacheDependencyKey Objects(string className) =>
+        public static IObjectsOfClassNameCacheDependencyKey ForObjectsOfClassName(string className) =>
             new FluentCacheKey(className, null);
 
         /// <summary>
         /// Builds Attachment related cache dependency keys
         /// </summary>
         /// <returns></returns>
-        public static IAttachmentCacheDependencyKey Attachment() =>
+        public static IAttachmentCacheDependencyKey ForAttachment() =>
+            new FluentCacheKey(null, null);
+
+        public static IAttachmentsCacheDependencyKey ForAttachments() =>
             new FluentCacheKey(null, null);
 
         /// <summary>
         /// Builds Media File related cache dependency keys
         /// </summary>
         /// <returns></returns>
-        public static IMediaFileCacheDependencyKey MediaFile() =>
+        public static IMediaFileCacheDependencyKey ForMediaFile() =>
             new FluentCacheKey(null, null);
 
         protected FluentCacheKey(string className, string siteName)
@@ -124,15 +129,15 @@ namespace FluentCacheKeys
 
         public static string WithDocumentId(this IPageCacheDependencyKey _, int documentId) =>
             $"documentid|{documentId}";
+
+        public static string RelationshipsOfNodeId(this IPageCacheDependencyKey _, int nodeId) =>
+            $"nodeid|{nodeId}|relationships";
     }
 
     public static class PagesCacheDependencyExtensions
     {
-        public static string WithParentAliasPath(this ISitePagesCacheDependencyKey key, string aliasPath) =>
+        public static string UnderAliasPath(this ISitePagesCacheDependencyKey key, string aliasPath) =>
             $"node|{key.SiteName}|{aliasPath}|childnodes";
-
-        public static string WithRelationshipsToNodeId(this IPagesCacheDependencyKey _, int nodeId) =>
-            $"nodeid|{nodeId}|relationships";
 
         public static string OfClass(this ISitePagesCacheDependencyKey key, string className) =>
             $"nodes|{key.SiteName}|{className}|all";
@@ -140,31 +145,34 @@ namespace FluentCacheKeys
 
     public static class AttachmentCacheDependencyExtensions
     {
-        public static string ForDocumentId(this IAttachmentCacheDependencyKey _, int documentId) =>
-            $"documentid|{documentId}|attachments";
-
         public static string WithGuid(this IAttachmentCacheDependencyKey _, Guid guid) =>
             $"attachment|{guid}";
+    }
+
+    public static class AttachmentsCacheKeyDependencyExtensions
+    {
+        public static string OfDocumentId(this IAttachmentCacheDependencyKey _, int documentId) =>
+            $"documentid|{documentId}|attachments";
 
         public static string All(this IAttachmentCacheDependencyKey _) =>
             "cms.attachment|all";
     }
 
-    public static class ObjectCacheDependencyExtensions
+    public static class ObjectOfClassNameClassCacheDependencyExtensions
     {
-        public static string WithId(this IObjectCacheDependencyKey key, int id) =>
+        public static string WithId(this IObjectOfClassNameCacheDependencyKey key, int id) =>
             $"{key.ClassName}|byid|{id}";
 
-        public static string WithCodeName(this IObjectCacheDependencyKey key, string codeName) =>
+        public static string WithCodeName(this IObjectOfClassNameCacheDependencyKey key, string codeName) =>
             $"{key.ClassName}|byname|{codeName}";
 
-        public static string WithGuid(this IObjectCacheDependencyKey key, Guid guid) =>
+        public static string WithGuid(this IObjectOfClassNameCacheDependencyKey key, Guid guid) =>
             $"{key.ClassName}|byguid|{guid}";
     }
 
-    public static class ObjectsCacheDependencyExtensions
+    public static class ObjectsOfClassNameCacheDependencyExtensions
     {
-        public static string All(this IObjectsCacheDependencyKey key) =>
+        public static string All(this IObjectsOfClassNameCacheDependencyKey key) =>
             $"{key.ClassName}|all";
     }
 

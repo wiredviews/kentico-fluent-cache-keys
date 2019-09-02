@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <PackageId>WiredViews.Kentico.FluentCacheKeys</PackageId>
     <Description>Kentico Fluent Cache Keys is a utility that helps generate consistent cache dependency keys for Kentico CMS applications.</Description>
     <Title>Kentico Fluent Cache Keys</Title>
