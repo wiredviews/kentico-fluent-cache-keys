@@ -7,6 +7,7 @@
     <Description>Kentico Fluent Cache Keys is a utility that helps generate consistent cache dependency keys for Kentico CMS applications.</Description>
     <Title>Kentico Fluent Cache Keys</Title>
     <Authors>WiredViews</Authors>
+    <Company>WiredViews</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <ProjectURL>https://github.com/wiredviews/kentico-fluent-cache-keys</ProjectURL>
     <Copyright>2019</Copyright>
