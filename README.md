@@ -15,31 +15,31 @@ FluentCacheKey.ForPage().WithNodeId(4);
 
 FluentCacheKey.ForPage().RelationshipsOfNodeId(4);
 
-FluentCacheKey.ForPage().OfSite("siteName").WithAliasPath("/path");
+FluentCacheKey.ForPage().OfSite("Sandbox").WithAliasPath("/home");
 
-FluentCacheKey.ForPage().OfSite("siteName").WithAliasPath("/path", "en-us");
+FluentCacheKey.ForPage().OfSite("Sandbox").WithAliasPath("/home", "en-us");
 
-FluentCacheKey.ForPages().OfSite("siteName").OfClassName("className");
+FluentCacheKey.ForPages().OfSite("Sandbox").OfClassName(HomePage.CLASS_NAME);
 
-FluentCacheKey.ForPages().OfSite("siteName").UnderAliasPath("/path");
+FluentCacheKey.ForPages().OfSite("Sandbox").UnderAliasPath("/home");
 ```
 
 ### Creating cache keys for CMS objects / custom module classes
 
 ```csharp
-FluentCacheKey.ForObject().OfClassName("className").WithCodeName("codeName");
+FluentCacheKey.ForObject().OfClassName(UserInfo.OBJECT_TYPE).WithName("administrator");
 
-FluentCacheKey.ForObject().OfClassName("className").WithGuid(default);
+FluentCacheKey.ForObject().OfClassName(UserInfo.OBJECT_TYPE).WithGuid(new Guid("9fb0c012-5d9b-4eb6-b5cd-0bb0daffaca0"));
 
-FluentCacheKey.ForObject().OfClassName("className").WithId(2);
+FluentCacheKey.ForObject().OfClassName(UserInfo.OBJECT_TYPE).WithId(2);
 
-FluentCacheKey.ForObjects().OfClassName("className").All();
+FluentCacheKey.ForObjects().OfClassName(UserInfo.OBJECT_TYPE).All();
 ```
 
 ### Creating cache keys for attachments
 
 ```csharp
-FluentCacheKey.ForAttachment().WithGuid(default);
+FluentCacheKey.ForAttachment().WithGuid(new Guid("9fb0c012-5d9b-4eb6-b5cd-0bb0daffaca0"));
 
 FluentCacheKey.ForAttachments().OfDocumentId(4);
 
@@ -49,7 +49,17 @@ FluentCacheKey.ForAttachments().All();
 ### Creating cache keys for media files
 
 ```csharp
-FluentCacheKey.ForMediaFile().WithGuid(default);
+FluentCacheKey.ForMediaFile().WithGuid(new Guid("9fb0c012-5d9b-4eb6-b5cd-0bb0daffaca0"));
 
-FluentCacheKey.ForMediaFile().PreviewWithGuid(default);
+FluentCacheKey.ForMediaFile().PreviewWithGuid(new Guid("9fb0c012-5d9b-4eb6-b5cd-0bb0daffaca0"));
 ```
+
+## References
+
+### Kentico Documentation
+- [Setting cache dependencies](https://docs.kentico.com/k12sp/configuring-kentico/configuring-caching/setting-cache-dependencies) for cache dependency key examples.
+
+- [Caching in custom code](https://docs.kentico.com/k12sp/configuring-kentico/configuring-caching/caching-in-custom-code) for examples of how to use these keys.
+
+### Blog Posts
+- [Kentico 12: Design Patterns Part 12 - Database Query Caching Patterns](https://dev.to/seangwright/kentico-12-design-patterns-part-12-database-query-caching-patterns-43hc) for best practices for caching in your application.

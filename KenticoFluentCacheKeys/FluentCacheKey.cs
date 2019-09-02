@@ -134,7 +134,7 @@ namespace FluentCacheKeys
         public static string UnderAliasPath(this ISitePagesCacheDependencyKey key, string aliasPath) =>
             $"node|{key.SiteName}|{aliasPath}|childnodes";
 
-        public static string OfClass(this ISitePagesCacheDependencyKey key, string className) =>
+        public static string OfClassName(this ISitePagesCacheDependencyKey key, string className) =>
             $"nodes|{key.SiteName}|{className}|all";
     }
 
@@ -146,10 +146,10 @@ namespace FluentCacheKeys
 
     public static class AttachmentsCacheKeyDependencyExtensions
     {
-        public static string OfDocumentId(this IAttachmentCacheDependencyKey _, int documentId) =>
+        public static string OfDocumentId(this IAttachmentsCacheDependencyKey _, int documentId) =>
             $"documentid|{documentId}|attachments";
 
-        public static string All(this IAttachmentCacheDependencyKey _) =>
+        public static string All(this IAttachmentsCacheDependencyKey _) =>
             "cms.attachment|all";
     }
 
@@ -158,14 +158,14 @@ namespace FluentCacheKeys
         public static IObjectOfClassNameCacheDependencyKey OfClassName(this IObjectCacheDependencyKey key, string className) =>
             new FluentCacheKey(className, null);
 
-        public static string WithId(this IObjectOfClassNameCacheDependencyKey key, int id) =>
-            $"{key.ClassName}|byid|{id}";
+        public static string WithId(this IObjectOfClassNameCacheDependencyKey key, int objectId) =>
+            $"{key.ClassName}|byid|{objectId}";
 
-        public static string WithCodeName(this IObjectOfClassNameCacheDependencyKey key, string codeName) =>
-            $"{key.ClassName}|byname|{codeName}";
+        public static string WithName(this IObjectOfClassNameCacheDependencyKey key, string objectName) =>
+            $"{key.ClassName}|byname|{objectName}";
 
-        public static string WithGuid(this IObjectOfClassNameCacheDependencyKey key, Guid guid) =>
-            $"{key.ClassName}|byguid|{guid}";
+        public static string WithGuid(this IObjectOfClassNameCacheDependencyKey key, Guid objectGuid) =>
+            $"{key.ClassName}|byguid|{objectGuid}";
     }
 
     public static class ObjectsOfClassNameCacheDependencyExtensions
@@ -179,10 +179,10 @@ namespace FluentCacheKeys
 
     public static class MediaFileCacheDependencyExtensions
     {
-        public static string WithGuid(this IMediaFileCacheDependencyKey _, Guid guid) =>
-            $"mediafile|{guid}";
+        public static string WithGuid(this IMediaFileCacheDependencyKey _, Guid mediaFileGuid) =>
+            $"mediafile|{mediaFileGuid}";
 
-        public static string PreviewWithGuid(this IMediaFileCacheDependencyKey _, Guid guid) =>
-            $"mediafile|preview|{guid}";
+        public static string PreviewWithGuid(this IMediaFileCacheDependencyKey _, Guid mediaFileGuid) =>
+            $"mediafile|preview|{mediaFileGuid}";
     }
 }
