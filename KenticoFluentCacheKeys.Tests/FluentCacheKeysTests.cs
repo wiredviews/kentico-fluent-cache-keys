@@ -129,5 +129,21 @@ namespace KenticoFluentCacheKeys.Tests
 
             key.Should().Be($"mediafile|preview|{mediaFileGuid}");
         }
+
+        [Theory, AutoData]
+        public void ForCustomTable_OfClassName_All_Will_Create_A_Valid_Key(string className)
+        {
+            string key = FluentCacheKey.ForCustomTable().OfClassName(className).All();
+
+            key.Should().Be($"customtableitem.{className}|all");
+        }
+
+        [Theory, AutoData]
+        public void ForCustomTable_OfClassName_ById_Will_Create_A_Valid_Key(string className, int id)
+        {
+            string key = FluentCacheKey.ForCustomTable().OfClassName(className).ById(id);
+
+            key.Should().Be($"customtableitem.{className}|byid|{id}");
+        }
     }
 }
