@@ -54,6 +54,14 @@ FluentCacheKey.ForMediaFile().WithGuid(new Guid("9fb0c012-5d9b-4eb6-b5cd-0bb0daf
 FluentCacheKey.ForMediaFile().PreviewWithGuid(new Guid("9fb0c012-5d9b-4eb6-b5cd-0bb0daffaca0"));
 ```
 
+### Creating cache keys for custom tables
+
+```csharp
+FluentCacheKey.ForCustomTable().OfClassName("MyCustomTable).All();
+
+FluentCacheKey.ForCustomTable().OfClassName("MyCustomTable").WithRecordId(5);
+```
+
 ## References
 
 ### Kentico Documentation

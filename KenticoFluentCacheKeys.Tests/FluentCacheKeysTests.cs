@@ -139,9 +139,9 @@ namespace KenticoFluentCacheKeys.Tests
         }
 
         [Theory, AutoData]
-        public void ForCustomTable_OfClassName_ById_Will_Create_A_Valid_Key(string className, int id)
+        public void ForCustomTable_OfClassName_WithRecordId_Will_Create_A_Valid_Key(string className, int id)
         {
-            string key = FluentCacheKey.ForCustomTable().OfClassName(className).ById(id);
+            string key = FluentCacheKey.ForCustomTable().OfClassName(className).WithRecordId(id);
 
             key.Should().Be($"customtableitem.{className}|byid|{id}");
         }

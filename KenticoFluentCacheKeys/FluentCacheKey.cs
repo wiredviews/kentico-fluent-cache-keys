@@ -209,7 +209,7 @@ namespace FluentCacheKeys
         public static string All(this ICustomTableOfClassNameCacheDependencyKey key) =>
             $"customtableitem.{key.ClassName}|all";
 
-        public static string ById(this ICustomTableOfClassNameCacheDependencyKey key, int id) =>
+        public static string WithRecordId(this ICustomTableOfClassNameCacheDependencyKey key, int id) =>
             $"customtableitem.{key.ClassName}|byid|{id}";
     }
 }
