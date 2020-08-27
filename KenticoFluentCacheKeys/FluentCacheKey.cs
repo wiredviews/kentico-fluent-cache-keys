@@ -29,6 +29,12 @@ namespace FluentCacheKeys
     public interface IAttachmentsCacheDependencyKey { }
     public interface IMediaFileCacheDependencyKey { }
 
+    public interface ICustomTableCacheDependencyKey {}
+    public interface ICustomTableOfClassNameCacheDependencyKey
+    {
+        string ClassName { get; }
+    }
+
     /// <summary>
     /// Starting point for extension methods used to help generate cache dependency keys for Kentico CMS applications
     /// </summary>
@@ -43,7 +49,9 @@ namespace FluentCacheKeys
         IObjectsCacheDependencyKey,
         IAttachmentCacheDependencyKey,
         IAttachmentsCacheDependencyKey,
-        IMediaFileCacheDependencyKey
+        IMediaFileCacheDependencyKey,
+        ICustomTableCacheDependencyKey,
+        ICustomTableOfClassNameCacheDependencyKey
     {
         public string ClassName { get; }
         public string SiteName { get; }
@@ -91,6 +99,13 @@ namespace FluentCacheKeys
         /// </summary>
         /// <returns></returns>
         public static IMediaFileCacheDependencyKey ForMediaFile() =>
+            new FluentCacheKey(null, null);
+
+        /// <summary>
+        /// Builds Custom Table related cache dependency keys
+        /// </summary>
+        /// <returns></returns>
+        public static ICustomTableCacheDependencyKey ForCustomTable() =>
             new FluentCacheKey(null, null);
 
         internal FluentCacheKey(string className, string siteName)
@@ -184,5 +199,17 @@ namespace FluentCacheKeys
 
         public static string PreviewWithGuid(this IMediaFileCacheDependencyKey _, Guid mediaFileGuid) =>
             $"mediafile|preview|{mediaFileGuid}";
+    }
+
+    public static class CustomTableDataRecordsCacheDependencyExtensions
+    {
+        public static ICustomTableOfClassNameCacheDependencyKey OfClassName(this ICustomTableCacheDependencyKey _, string className) =>
+            new FluentCacheKey(className, null);
+        
+        public static string All(this ICustomTableOfClassNameCacheDependencyKey key) =>
+            $"customtableitem.{key.ClassName}|all";
+
+        public static string WithRecordId(this ICustomTableOfClassNameCacheDependencyKey key, int id) =>
+            $"customtableitem.{key.ClassName}|byid|{id}";
     }
 }
