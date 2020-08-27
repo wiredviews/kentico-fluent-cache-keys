@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <VersionPrefix>2.0.0</VersionPrefix>
+    <VersionPrefix>2.1.0</VersionPrefix>
     <PackageId>WiredViews.Kentico.FluentCacheKeys</PackageId>
     <Description>Kentico Fluent Cache Keys is a utility that helps generate consistent cache dependency keys for Kentico CMS applications.</Description>
     <Title>Kentico Fluent Cache Keys</Title>
@@ -10,10 +10,10 @@
     <Company>WiredViews</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <ProjectURL>https://github.com/wiredviews/kentico-fluent-cache-keys</ProjectURL>
-    <Copyright>2019</Copyright>
+    <Copyright>2020</Copyright>
     <PackageProjectUrl>https://github.com/wiredviews/kentico-fluent-cache-keys</PackageProjectUrl>
     <RepositoryUrl>https://github.com/wiredviews/kentico-fluent-cache-keys</RepositoryUrl>
-    <PackageTags>Kentico;CMS;Cache</PackageTags>
+    <PackageTags>Kentico;Xperience;CMS;Cache</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
