@@ -35,6 +35,12 @@ namespace FluentCacheKeys
         string ClassName { get; }
     }
 
+    public interface ISettingCacheDependencyKey { }
+    public interface ISiteSettingCacheDependencyKey
+    {
+        int SiteId { get; }
+    }
+
     /// <summary>
     /// Starting point for extension methods used to help generate cache dependency keys for Kentico CMS applications
     /// </summary>
@@ -51,10 +57,13 @@ namespace FluentCacheKeys
         IAttachmentsCacheDependencyKey,
         IMediaFileCacheDependencyKey,
         ICustomTableCacheDependencyKey,
-        ICustomTableOfClassNameCacheDependencyKey
+        ICustomTableOfClassNameCacheDependencyKey,
+        ISettingCacheDependencyKey,
+        ISiteSettingCacheDependencyKey
     {
         public string ClassName { get; }
         public string SiteName { get; }
+        public int SiteId { get; }
 
         /// <summary>
         /// Builds Document and Node related cache dependency keys for a single page
@@ -108,10 +117,20 @@ namespace FluentCacheKeys
         public static ICustomTableCacheDependencyKey ForCustomTable() =>
             new FluentCacheKey(null, null);
 
+        public static ISettingCacheDependencyKey ForSetting() =>
+            new FluentCacheKey(null, null);
+
+
         internal FluentCacheKey(string className, string siteName)
         {
             ClassName = className;
             SiteName = siteName;
+        }
+
+        internal FluentCacheKey(string className, int siteId)
+        {
+            ClassName = className;
+            SiteId = siteId;
         }
     }
 
@@ -211,5 +230,17 @@ namespace FluentCacheKeys
 
         public static string WithRecordId(this ICustomTableOfClassNameCacheDependencyKey key, int id) =>
             $"customtableitem.{key.ClassName}|byid|{id}";
+    }
+
+    public static class SettingCacheDependencyExtensions
+    {
+        public static ISiteSettingCacheDependencyKey OfSiteId(this ISettingCacheDependencyKey _, int siteId) =>
+            new FluentCacheKey(null, siteId);
+
+        public static string WithCodeName(this ISiteSettingCacheDependencyKey key, string codeName) =>
+            $"cms.settingskey|{key.SiteId}|{codeName}";
+
+        public static string WithCodeName(this ISettingCacheDependencyKey _, string codeName) =>
+             $"cms.settingskey|{codeName}";
     }
 }
