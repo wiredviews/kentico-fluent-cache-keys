@@ -145,5 +145,21 @@ namespace KenticoFluentCacheKeys.Tests
 
             key.Should().Be($"customtableitem.{className}|byid|{id}");
         }
+
+        [Theory, AutoData]
+        public void ForSetting_OfSiteId_WithCodeName_Will_Create_A_Valid_Key(int siteId, string codeName)
+        {
+            string key = FluentCacheKey.ForSetting().OfSiteId(siteId).WithCodeName(codeName);
+
+            key.Should().Be($"cms.settingskey|{siteId}|{codeName}");
+        }
+
+        [Theory, AutoData]
+        public void ForSetting_WithCodeName_Will_Create_A_Valid_Key(string codeName)
+        {
+            string key = FluentCacheKey.ForSetting().WithCodeName(codeName);
+
+            key.Should().Be($"cms.settingskey|{codeName}");
+        }
     }
 }
