@@ -1,8 +1,22 @@
 # Kentico Fluent Cache Keys
 
-Utility library for generating consistent cache dependency keys for Kentico CMS applications
+Utility library for generating consistent cache dependency keys for Kentico Xperience applications
 
-[Install the NuGet Package](https://www.nuget.org/packages/WiredViews.Kentico.FluentCacheKeys/)
+[![GitHub Actions CI: Build](https://github.com/wiredviews/kentico-fluent-cache-keys/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/wiredviews/kentico-fluent-cache-keys/actions/workflows/ci.yml)
+
+[![Publish Packages to NuGet](https://github.com/wiredviews/kentico-fluent-cache-keys/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/wiredviews/kentico-fluent-cache-keys/actions/workflows/publish.yml)
+
+## Packages
+
+[![NuGet Package](https://img.shields.io/nuget/v/WiredViews.Kentico.FluentCacheKeys.svg)](https://www.nuget.org/packages/WiredViews.Kentico.FluentCacheKeys)
+
+## How to Use?
+
+1. Install the `WiredViews.Kentico.FluentCacheKeys` [NuGet](https://www.nuget.org/packages/WiredViews.Kentico.FluentCacheKeys/) package in your project:
+
+   ```bash
+   dotnet add package WiredViews.Kentico.FluentCacheKeys
+   ```
 
 ## Examples
 
@@ -62,12 +76,28 @@ FluentCacheKey.ForCustomTable().OfClassName("MyCustomTable").All();
 FluentCacheKey.ForCustomTable().OfClassName("MyCustomTable").WithRecordId(5);
 ```
 
+### Creating cache keys for settings
+
+```csharp
+FluentCacheKey.ForSetting().WithCodeName("settingKeyName");
+
+FluentCacheKey.ForSetting().OfSiteId(1).WithCodeName("settingKeyName");
+```
+
+## Contributions
+
+If you discover a problem, please [open an issue](https://github.com/wiredviews/kentico-fluent-cache-keys/issues/new).
+
+If you would like contribute to the code or documentation, please [open a pull request](https://github.com/wiredviews/kentico-fluent-cache-keys/compare).
+
 ## References
 
 ### Kentico Documentation
+
 - [Setting cache dependencies](https://docs.kentico.com/k12sp/configuring-kentico/configuring-caching/setting-cache-dependencies) for cache dependency key examples.
 
 - [Caching in custom code](https://docs.kentico.com/k12sp/configuring-kentico/configuring-caching/caching-in-custom-code) for examples of how to use these keys.
 
 ### Blog Posts
+
 - [Kentico 12: Design Patterns Part 12 - Database Query Caching Patterns](https://dev.to/seangwright/kentico-12-design-patterns-part-12-database-query-caching-patterns-43hc) for best practices for caching in your application.

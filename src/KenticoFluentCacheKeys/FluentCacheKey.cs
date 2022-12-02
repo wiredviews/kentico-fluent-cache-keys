@@ -29,7 +29,7 @@ namespace FluentCacheKeys
     public interface IAttachmentsCacheDependencyKey { }
     public interface IMediaFileCacheDependencyKey { }
 
-    public interface ICustomTableCacheDependencyKey {}
+    public interface ICustomTableCacheDependencyKey { }
     public interface ICustomTableOfClassNameCacheDependencyKey
     {
         string ClassName { get; }
@@ -145,7 +145,7 @@ namespace FluentCacheKeys
         public static string WithNodeId(this IPageCacheDependencyKey _, int nodeId) =>
             $"nodeid|{nodeId}";
 
-        public static ISitePageCacheDependencyKey OfSite(this IPageCacheDependencyKey page, string siteName) =>
+        public static ISitePageCacheDependencyKey OfSite(this IPageCacheDependencyKey _, string siteName) =>
             new FluentCacheKey(null, siteName);
 
         public static string WithAliasPath(this ISitePageCacheDependencyKey key, string aliasPath) =>
@@ -162,7 +162,7 @@ namespace FluentCacheKeys
 
     public static class PagesCacheDependencyExtensions
     {
-        public static ISitePagesCacheDependencyKey OfSite(this IPagesCacheDependencyKey page, string siteName) =>
+        public static ISitePagesCacheDependencyKey OfSite(this IPagesCacheDependencyKey _, string siteName) =>
             new FluentCacheKey(null, siteName);
 
         public static string UnderAliasPath(this ISitePagesCacheDependencyKey key, string aliasPath) =>
@@ -189,7 +189,7 @@ namespace FluentCacheKeys
 
     public static class ObjectOfClassNameClassCacheDependencyExtensions
     {
-        public static IObjectOfClassNameCacheDependencyKey OfClassName(this IObjectCacheDependencyKey key, string className) =>
+        public static IObjectOfClassNameCacheDependencyKey OfClassName(this IObjectCacheDependencyKey _, string className) =>
             new FluentCacheKey(className, null);
 
         public static string WithId(this IObjectOfClassNameCacheDependencyKey key, int objectId) =>
@@ -204,7 +204,7 @@ namespace FluentCacheKeys
 
     public static class ObjectsOfClassNameCacheDependencyExtensions
     {
-        public static IObjectsOfClassNameCacheDependencyKey OfClassName(this IObjectsCacheDependencyKey key, string className) =>
+        public static IObjectsOfClassNameCacheDependencyKey OfClassName(this IObjectsCacheDependencyKey _, string className) =>
             new FluentCacheKey(className, null);
 
         public static string All(this IObjectsOfClassNameCacheDependencyKey key) =>
@@ -224,7 +224,7 @@ namespace FluentCacheKeys
     {
         public static ICustomTableOfClassNameCacheDependencyKey OfClassName(this ICustomTableCacheDependencyKey _, string className) =>
             new FluentCacheKey(className, null);
-        
+
         public static string All(this ICustomTableOfClassNameCacheDependencyKey key) =>
             $"customtableitem.{key.ClassName}|all";
 
