@@ -58,6 +58,14 @@ namespace KenticoFluentCacheKeys.Tests
             key.Should().Be($"node|{siteName}|{aliasPath}|childnodes");
         }
 
+        [Fact]
+        public void ForPagesNodeOrder_All_Will_Create_A_Valid_Key()
+        {
+            string key = FluentCacheKey.ForPagesNodeOrder().All();
+
+            key.Should().Be("nodeorder");
+        }
+
         [Theory, AutoData]
         public void ForPages_OfSite_OfClass_Will_Create_A_Valid_Key(string siteName, string className)
         {
