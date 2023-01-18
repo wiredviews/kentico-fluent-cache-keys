@@ -36,6 +36,8 @@ FluentCacheKey.ForPage().OfSite("Sandbox").WithAliasPath("/home", "en-us");
 FluentCacheKey.ForPages().OfSite("Sandbox").OfClassName(HomePage.CLASS_NAME);
 
 FluentCacheKey.ForPages().OfSite("Sandbox").UnderAliasPath("/home");
+
+FluentCacheKey.ForPagesNodeOrder().All();
 ```
 
 ### Creating cache keys for CMS objects / custom module classes

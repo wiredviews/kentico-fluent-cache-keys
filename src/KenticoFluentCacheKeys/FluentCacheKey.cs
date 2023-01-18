@@ -8,6 +8,7 @@ namespace FluentCacheKeys
         string SiteName { get; }
     }
     public interface IPagesCacheDependencyKey { }
+    public interface IPagesNodeOrderCacheDependencyKey { }
     public interface ISitePagesCacheDependencyKey
     {
         string SiteName { get; }
@@ -48,6 +49,7 @@ namespace FluentCacheKeys
         IPageCacheDependencyKey,
         ISitePageCacheDependencyKey,
         IPagesCacheDependencyKey,
+        IPagesNodeOrderCacheDependencyKey,
         ISitePagesCacheDependencyKey,
         IObjectCacheDependencyKey,
         IObjectOfClassNameCacheDependencyKey,
@@ -77,6 +79,13 @@ namespace FluentCacheKeys
         /// </summary>
         /// <returns></returns>
         public static IPagesCacheDependencyKey ForPages() =>
+            new FluentCacheKey(null, null);
+
+        /// <summary>
+        /// Builds Document and Node related cache dependency keys for changes in the node order
+        /// </summary>
+        /// <returns></returns>
+        public static IPagesNodeOrderCacheDependencyKey ForPagesNodeOrder() =>
             new FluentCacheKey(null, null);
 
         /// <summary>
@@ -162,6 +171,9 @@ namespace FluentCacheKeys
 
     public static class PagesCacheDependencyExtensions
     {
+        public static string All(this IPagesNodeOrderCacheDependencyKey _) =>
+            "nodeorder";
+
         public static ISitePagesCacheDependencyKey OfSite(this IPagesCacheDependencyKey _, string siteName) =>
             new FluentCacheKey(null, siteName);
 
