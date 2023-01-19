@@ -7,7 +7,7 @@
 		<Copyright>Copyright © $(Company) $([System.DateTime]::Now.Year)</Copyright>
 		<Trademark>$(Company)™</Trademark>
 		<Product>WiredViews.Kentico.FluentCacheKeys</Product>
-		<VersionPrefix>2.2.0</VersionPrefix>
+		<VersionPrefix>2.3.0</VersionPrefix>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Title>$(Product)</Title>
 		<PackageProjectUrl>https://github.com/wiredviews/kentico-fluent-cache-keys</PackageProjectUrl>
